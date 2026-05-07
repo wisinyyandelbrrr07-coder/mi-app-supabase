@@ -18,3 +18,20 @@ async function obtenerEstudiantes() {
 }
 
 obtenerEstudiantes()
+async function insertarEstudiante() {
+    const { data, error } = await supabase
+        .from('estudiantes')
+        .insert([
+            { nombre: 'Aaron - Registro desde Código' } 
+        ])
+        .select()
+
+    if (error) {
+        console.log('Error al insertar:', error)
+    } else {
+        console.log('Estudiante insertado con éxito:', data)
+    }
+}
+
+// Llama a la función para probar
+insertarEstudiante()
